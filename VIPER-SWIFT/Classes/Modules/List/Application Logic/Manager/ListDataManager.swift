@@ -1,4 +1,3 @@
-
 //
 //  ListDataManager.swift
 //  VIPER-SWIFT
@@ -12,7 +11,9 @@ import Foundation
 class ListDataManager: NSObject {
     var coreDataStore: CoreDataStore?
 
-    func todoItemsBetweenStartDate(startDate: NSDate, endDate: NSDate, completion: (([TodoItem]) -> Void)!) {
+    func todoItemsBetweenStartDate(startDate: NSDate,
+                                   endDate: NSDate,
+                                   completion: (([TodoItem]) -> Void)!) {
         let calendar = NSCalendar.autoupdatingCurrentCalendar()
         let beginning = calendar.dateForBeginningOfDay(startDate)
         let end = calendar.dateForEndOfDay(endDate)
@@ -32,7 +33,8 @@ class ListDataManager: NSObject {
         var todoItems: [TodoItem] = []
 
         for managedTodoItem in entries {
-            let todoItem = TodoItem(dueDate: managedTodoItem.date, name: managedTodoItem.name as String)
+            let todoItem = TodoItem(dueDate: managedTodoItem.date,
+                                    name: managedTodoItem.name as String)
             todoItems.append(todoItem)
         }
 

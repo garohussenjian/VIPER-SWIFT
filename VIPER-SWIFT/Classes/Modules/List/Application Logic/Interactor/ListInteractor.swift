@@ -35,8 +35,10 @@ class ListInteractor: NSObject, ListInteractorInput {
         let calendar = NSCalendar.autoupdatingCurrentCalendar()
 
         let upcomingItems: [UpcomingItem] = todoItems.map() { todoItem in
-            let dateRelation = calendar.nearTermRelationForDate(todoItem.dueDate, relativeToToday: clock.today())
-            return UpcomingItem(title: todoItem.name, dueDate: todoItem.dueDate, dateRelation: dateRelation)
+            let dateRelation = calendar.nearTermRelationForDate(todoItem.dueDate,
+                relativeToToday: clock.today())
+            return UpcomingItem(title: todoItem.name, dueDate: todoItem.dueDate,
+                dateRelation: dateRelation)
         }
         return upcomingItems
     }

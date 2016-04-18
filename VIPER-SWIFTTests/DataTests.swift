@@ -22,9 +22,7 @@ class DataTests: XCTestCase {
         self.measureBlock() {
             let startDate = NSDate()
             let endDate = NSDate(timeIntervalSinceReferenceDate: 0)
-            self.dataManager.todoItemsBetweenStartDate(startDate, endDate: endDate, completion: { entries in
-
-            })
+            self.dataManager.todoItemsBetweenStartDate(startDate, endDate: endDate) { entries in }
         }
     }
 

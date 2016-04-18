@@ -62,7 +62,8 @@ extension NSCalendar {
         let endOfWeek = dateForEndOfWeekWithDate(date)
         let nextWeekComponent = NSDateComponents()
         nextWeekComponent.weekOfYear = 1
-        let followingWeekDate = dateByAddingComponents(nextWeekComponent, toDate: endOfWeek, options: [])
+        let followingWeekDate = dateByAddingComponents(nextWeekComponent,
+                                                       toDate: endOfWeek, options: [])
         return followingWeekDate!
     }
 
@@ -136,7 +137,8 @@ extension NSCalendar {
 
         let isDateBeforeYearMonthDay = isDate(date, beforeYearMonthDay: relativeToToday)
         let isDateEqualToYearMonthDay = isDate(date, equalToYearMonthDay: relativeToToday)
-        let isDateEqualToYearMonthDayRelativeToTomorrow = isDate(date, equalToYearMonthDay: dateForTomorrow)
+        let isDateEqualToYearMonthDayRelativeToTomorrow =
+            isDate(date, equalToYearMonthDay: dateForTomorrow)
         let isDateDuringSameWeekAsDate = isDate(date, duringSameWeekAsDate: relativeToToday)
         let isDateDuringSameWeekAfterDate = isDate(date, duringWeekAfterDate: relativeToToday)
 

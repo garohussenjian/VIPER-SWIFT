@@ -9,9 +9,11 @@
 import Foundation
 import UIKit
 
-let ListViewControllerIdentifier = "ListViewController"
 
 class ListWireframe: NSObject {
+
+    let storyboardIdentifier = "ListViewController"
+
     var addWireframe: AddWireframe?
     var listPresenter: ListPresenter?
     var rootWireframe: RootWireframe?
@@ -31,7 +33,10 @@ class ListWireframe: NSObject {
 
     func listViewControllerFromStoryboard() -> ListViewController {
         let storyboard = mainStoryboard()
-        let viewController = storyboard.instantiateViewControllerWithIdentifier(ListViewControllerIdentifier) as! ListViewController
+        guard let viewController =
+            storyboard.instantiateViewControllerWithIdentifier(storyboardIdentifier)
+                as? ListViewController
+            else { fatalError() }
         return viewController
     }
 

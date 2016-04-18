@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-var ListEntryCellIdentifier = "ListEntryCell"
-
 class ListViewController: UITableViewController, ListViewInterface {
+
+    let entryCellIdentifier = "ListEntryCell"
+
     var eventHandler: ListModuleInterface?
     var dataProperty: UpcomingDisplayData?
     var strongTableView: UITableView?
@@ -34,7 +35,9 @@ class ListViewController: UITableViewController, ListViewInterface {
     func configureView() {
         navigationItem.title = "VIPER TODO"
 
-        let addItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(didTapAddButton))
+        let addItem = UIBarButtonItem(barButtonSystemItem: .Add,
+                                      target: self,
+                                      action: #selector(didTapAddButton))
 
         navigationItem.rightBarButtonItem = addItem
     }
@@ -73,16 +76,19 @@ class ListViewController: UITableViewController, ListViewInterface {
         return upcomingSection!.items.count
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(tableView: UITableView,
+                            titleForHeaderInSection section: Int) -> String? {
         let upcomingSection = dataProperty?.sections[section]
         return upcomingSection!.name
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath
+        indexPath: NSIndexPath) -> UITableViewCell {
         let upcomingSection = dataProperty?.sections[indexPath.section]
         let upcomingItem = upcomingSection!.items[indexPath.row]
 
-        let cell = tableView.dequeueReusableCellWithIdentifier(ListEntryCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(entryCellIdentifier,
+                                                               forIndexPath: indexPath)
 
         cell.textLabel?.text = upcomingItem.title
         cell.detailTextLabel?.text = upcomingItem.dueDate

@@ -13,7 +13,9 @@ class UpcomingDisplayDataCollection {
     var sections: [NearTermDateRelation: [UpcomingDisplayItem]] = [:]
 
     init() {
-        dayFormatter.dateFormat = NSDateFormatter.dateFormatFromTemplate("EEEE", options: 0, locale: NSLocale.autoupdatingCurrentLocale())
+        dayFormatter.dateFormat =
+            NSDateFormatter.dateFormatFromTemplate("EEEE", options: 0,
+                                                   locale: NSLocale.autoupdatingCurrentLocale())
     }
 
     func addUpcomingItems(upcomingItems: [UpcomingItem]) {
@@ -57,7 +59,8 @@ class UpcomingDisplayDataCollection {
         return UpcomingDisplayData(sections: collectedSections)
     }
 
-    func displaySectionForDateRelation(dateRelation: NearTermDateRelation) -> UpcomingDisplaySection {
+    func displaySectionForDateRelation(
+        dateRelation: NearTermDateRelation) -> UpcomingDisplaySection {
         let sectionTitle = sectionTitleForDateRelation(dateRelation)
         let imageName = sectionImageNameForDateRelation(dateRelation)
         let items: [UpcomingDisplayItem] = sections[dateRelation]!
@@ -70,9 +73,7 @@ class UpcomingDisplayDataCollection {
         var displaySections: [UpcomingDisplaySection] = []
 
         for dateRelation in keys {
-            let itemArray = sections[dateRelation]
-
-            if (itemArray != nil) {
+            if sections[dateRelation] != nil {
                 let displaySection = displaySectionForDateRelation(dateRelation)
                 displaySections.insert(displaySection, atIndex: displaySections.endIndex)
             }

@@ -13,7 +13,8 @@ struct UpcomingItem: Equatable {
     let dueDate: NSDate
     let dateRelation: NearTermDateRelation
 
-    init(title: String, dueDate: NSDate = NSDate(), dateRelation: NearTermDateRelation = NearTermDateRelation.OutOfRange) {
+    init(title: String, dueDate: NSDate = NSDate(),
+         dateRelation: NearTermDateRelation = NearTermDateRelation.OutOfRange) {
         self.title = title
         self.dueDate = dueDate
         self.dateRelation = dateRelation

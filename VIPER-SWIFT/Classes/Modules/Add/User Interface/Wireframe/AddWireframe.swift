@@ -9,9 +9,10 @@
 import Foundation
 import UIKit
 
-let AddViewControllerIdentifier = "AddViewController"
 
 class AddWireframe: NSObject, UIViewControllerTransitioningDelegate {
+
+    let storyboardIdentifier = "AddViewController"
 
     var addPresenter: AddPresenter?
     var presentedViewController: UIViewController?
@@ -35,7 +36,9 @@ class AddWireframe: NSObject, UIViewControllerTransitioningDelegate {
 
     func addViewController() -> AddViewController {
         let storyboard = mainStoryboard()
-        let addViewController: AddViewController = storyboard.instantiateViewControllerWithIdentifier(AddViewControllerIdentifier) as! AddViewController
+        guard let addViewController =
+            storyboard.instantiateViewControllerWithIdentifier(storyboardIdentifier)
+                as? AddViewController else { fatalError() }
         return addViewController
     }
 
@@ -44,11 +47,15 @@ class AddWireframe: NSObject, UIViewControllerTransitioningDelegate {
         return storyboard
     }
 
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationControllerForDismissedController(
+        dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AddDismissalTransition()
     }
 
-   func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationControllerForPresentedController(
+        presentedController: UIViewController,
+        presentingController: UIViewController,
+        sourceController: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AddPresentationTransition()
     }
 }

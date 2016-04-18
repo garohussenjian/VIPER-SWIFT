@@ -49,7 +49,8 @@ class RelativeDateTests: XCTestCase {
         let date = calendar.dateWithYear(2004, month: 3, day: 6)
         let today = calendar.dateWithYear(2004, month: 3, day: 2)
         let relation = calendar.nearTermRelationForDate(date, relativeToToday: today)
-        XCTAssertEqual(relation, NearTermDateRelation.LaterThisWeek, "\(date) should be later this week.")
+        XCTAssertEqual(relation, NearTermDateRelation.LaterThisWeek,
+                       "\(date) should be later this week.")
     }
 
     func testDateDuringWeekAfterTodayRelatesAsNextWeek() {

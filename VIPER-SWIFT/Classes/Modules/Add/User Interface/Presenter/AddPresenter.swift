@@ -8,22 +8,22 @@
 
 import Foundation
 
-class AddPresenter : NSObject, AddModuleInterface {
-    var addInteractor : AddInteractor?
-    var addWireframe : AddWireframe?
-    var addModuleDelegate : AddModuleDelegate?
-    
+class AddPresenter: NSObject, AddModuleInterface {
+    var addInteractor: AddInteractor?
+    var addWireframe: AddWireframe?
+    var addModuleDelegate: AddModuleDelegate?
+
     func cancelAddAction() {
         addWireframe?.dismissAddInterface()
         addModuleDelegate?.addModuleDidCancelAddAction()
     }
-    
+
     func saveAddActionWithName(name: String, dueDate: NSDate) {
-        addInteractor?.saveNewEntryWithName(name, dueDate: dueDate);
+        addInteractor?.saveNewEntryWithName(name, dueDate: dueDate)
         addWireframe?.dismissAddInterface()
         addModuleDelegate?.addModuleDidSaveAddAction()
     }
-    
+
     func configureUserInterfaceForPresentation(addViewUserInterface: AddViewInterface) {
         addViewUserInterface.setMinimumDueDate(NSDate())
     }

@@ -13,31 +13,31 @@ class CalendarTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        
+
         calendar = NSCalendar.gregorianCalendar()
     }
-    
+
     func testEarlyYearMonthDayIsBeforeLaterYearMonthDay() {
         let earlyDate = calendar.dateWithYear(2004, month: 2, day: 29)
         let laterDate = calendar.dateWithYear(2004, month: 3, day: 1)
         let comparison = calendar.isDate(earlyDate, beforeYearMonthDay: laterDate)
         XCTAssert(comparison, "\(earlyDate) should be before \(laterDate)")
     }
-    
+
     func testYearMonthDayIsNotBeforeSameYearMonthDay() {
         let earlyDate = calendar.dateWithYear(2005, month: 6, day: 1)
         let laterDate = calendar.dateWithYear(2005, month: 6, day: 1)
         let comparison = calendar.isDate(earlyDate, beforeYearMonthDay: laterDate)
         XCTAssertFalse(comparison, "\(earlyDate) should not be before \(laterDate)")
     }
-    
+
     func testLaterYearMonthDayIsNotBeforeEarlyYearMonthDay() {
         let earlyDate = calendar.dateWithYear(2006, month: 4, day: 15)
         let laterDate = calendar.dateWithYear(2006, month: 4, day: 16)
         let comparison = calendar.isDate(laterDate, beforeYearMonthDay: earlyDate)
         XCTAssertFalse(comparison, "\(earlyDate) should not be before \(laterDate)")
     }
-    
+
     func testEqualYearMonthDaysCompareAsEqual() {
         let earlyDate = calendar.dateWithYear(2005, month: 6, day: 1)
         let laterDate = calendar.dateWithYear(2005, month: 6, day: 1)
@@ -59,12 +59,12 @@ class CalendarTests: XCTestCase {
         let comparison = calendar.isDate(nextWeek, equalToYearMonthDay: expectedNextWeek)
         XCTAssert(comparison, "Next week should end on \(expectedNextWeek) (not \(nextWeek))")
     }
-    
+
     func testEndOfNextWeekDuringFollowingYear() {
         let date = calendar.dateWithYear(2005, month: 12, day: 27)
         let expectedNextWeek = calendar.dateWithYear(2006, month: 1, day: 7)
         let nextWeek = calendar.dateForEndOfFollowingWeekWithDate(date)
         let comparison = calendar.isDate(nextWeek, equalToYearMonthDay: expectedNextWeek)
         XCTAssert(comparison, "Next week should end on \(expectedNextWeek) (not \(nextWeek))")
-    }    
+    }
 }

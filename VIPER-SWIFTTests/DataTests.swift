@@ -14,16 +14,16 @@ class DataTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        
+
         dataManager.coreDataStore = dataStore
     }
-    
+
     func testPerformance() {
         self.measureBlock() {
             let startDate = NSDate()
             let endDate = NSDate(timeIntervalSinceReferenceDate: 0)
             self.dataManager.todoItemsBetweenStartDate(startDate, endDate: endDate, completion: { entries in
-                
+
             })
         }
     }

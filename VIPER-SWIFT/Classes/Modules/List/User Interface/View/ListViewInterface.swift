@@ -13,5 +13,4 @@ protocol ListViewInterface {
     func showUpcomingDisplayData(data: UpcomingDisplayData)
     func reloadEntries ()
 }
-    
 

@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct UpcomingItem : Equatable {
-    let title : String
-    let dueDate : NSDate
-    let dateRelation : NearTermDateRelation
-    
+struct UpcomingItem: Equatable {
+    let title: String
+    let dueDate: NSDate
+    let dateRelation: NearTermDateRelation
+
     init(title: String, dueDate: NSDate = NSDate(), dateRelation: NearTermDateRelation = NearTermDateRelation.OutOfRange) {
         self.title = title
         self.dueDate = dueDate
@@ -23,18 +23,18 @@ struct UpcomingItem : Equatable {
 func == (leftSide: UpcomingItem, rightSide: UpcomingItem) -> Bool {
     var hasEqualSections = false
     hasEqualSections = rightSide.title == leftSide.title
-    
+
     if hasEqualSections == false {
         return false
     }
-    
+
     hasEqualSections = rightSide.dueDate == rightSide.dueDate
-    
+
     if hasEqualSections == false {
         return false
     }
-    
+
     hasEqualSections = rightSide.dateRelation == rightSide.dateRelation
-    
+
     return hasEqualSections
 }

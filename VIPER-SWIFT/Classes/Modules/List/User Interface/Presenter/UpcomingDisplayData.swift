@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct UpcomingDisplayData : Equatable {
-    let sections : [UpcomingDisplaySection]
+struct UpcomingDisplayData: Equatable {
+    let sections: [UpcomingDisplaySection]
 }
 
 func == (leftSide: UpcomingDisplayData, rightSide: UpcomingDisplayData) -> Bool {

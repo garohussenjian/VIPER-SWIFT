@@ -8,21 +8,21 @@
 
 import Foundation
 
-class ListInteractor : NSObject, ListInteractorInput {
-    var output : ListInteractorOutput?
-    
-    let clock : Clock
-    let dataManager : ListDataManager
-    
+class ListInteractor: NSObject, ListInteractorInput {
+    var output: ListInteractorOutput?
+
+    let clock: Clock
+    let dataManager: ListDataManager
+
     init(dataManager: ListDataManager, clock: Clock) {
         self.dataManager = dataManager
         self.clock = clock
     }
-    
+
     func findUpcomingItems() {
         let today = clock.today()
         let endOfNextWeek = NSCalendar.currentCalendar().dateForEndOfFollowingWeekWithDate(today)
-        
+
         dataManager.todoItemsBetweenStartDate(today,
             endDate: endOfNextWeek,
             completion: { todoItems in
@@ -30,10 +30,10 @@ class ListInteractor : NSObject, ListInteractorInput {
                 self.output?.foundUpcomingItems(upcomingItems)
         })
     }
-    
+
     func upcomingItemsFromToDoItems(todoItems: [TodoItem]) -> [UpcomingItem] {
         let calendar = NSCalendar.autoupdatingCurrentCalendar()
-        
+
         let upcomingItems: [UpcomingItem] = todoItems.map() { todoItem in
             let dateRelation = calendar.nearTermRelationForDate(todoItem.dueDate, relativeToToday: clock.today())
             return UpcomingItem(title: todoItem.name, dueDate: todoItem.dueDate, dateRelation: dateRelation)
